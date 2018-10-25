@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+  <style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+</style>
+  </head>
+  <body>
+  <form name="form1">
+    <input type="checkbox" name="check[]" data-weight="5" /> 5<br />
+    <input type="checkbox" name="check[]" data-weight="10" /> 10<br />
+    <input type="checkbox" name="check[]" data-weight="30" /> 30<br />
+  </form>
+  <div>Total: <span id="total">0</span></div>
+</body>
+<script type="text/javascript">
+	
+	    (function () {
+        var totalEl = document.getElementById('total'),
+            total = 0,
+            checkboxes = document.form1['check[]'],
+            handleClick = function () {
+                total += parseInt(this['data-weight'], 10) * (this.checked ? 1 : -1);
+                totalEl.innerHTML = total;
+            },
+            i, l
+        ;
+        for (i = 0, l = checkboxes.length; i < l; ++i) {
+            checkboxes[i].onclick = handleClick;
+        }
+    }());
+</script>
+</html>
